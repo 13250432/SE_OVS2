@@ -1,0 +1,22 @@
+table {
+	width: 100%;
+
+	/* for equal column width */
+	table-layout: fixed;
+}
+
+td {
+	text-align: left;
+	vertical-align: top;
+}
+
+ul {
+	list-style-position: inside;
+
+	margin: 0px;
+	padding: 0px;
+}
+
+.tr-spacer {
+	height: var(--margin-wide);
+}

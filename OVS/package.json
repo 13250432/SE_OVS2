@@ -1,0 +1,19 @@
+{
+	"name": "online-voting-system",
+	"description": "Online Voting System",
+	"author": "Group 42",
+	"version": "0.0.1",
+	"dependencies": {
+		"node": "*",
+		"nodemon": "*",
+		"express": "*",
+		"ejs": "*",
+		"mongoose": "*",
+		"body-parser": "*",
+		"cookie-session": "*"
+	},
+	"scripts": {
+		"debug": "nodemon --env-file=server.env server.js",
+		"start": "node --env-file=server.env server.js"
+	}
+}

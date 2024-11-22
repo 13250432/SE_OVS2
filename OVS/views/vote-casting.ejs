@@ -1,0 +1,74 @@
+<span class="heading"><%= page.vote.topic %></span>
+<br />
+
+<% if (page.vote.endDateFormatted) { %>
+	<div>
+		<span class="material-symbols-outlined icon">event</span>
+		<%= page.vote.endDateFormatted %>
+	</div>
+<% } %>
+
+<div>
+	<span class="material-symbols-outlined icon">check</span>
+
+	<% if (page.vote.multiple) { %>
+		<span>Select one or more choices</span>
+	<% } else { %>
+		<span>Select one choice only</span>
+	<% } %>
+</div>
+
+<div class="divider"></div>
+
+<form action="javascript:submitVote()" method="post" id="submit-vote"></form>
+<form action="/" method="get" id="return-home"></form>
+<input type="hidden" id="vote-id" value=<%= page.vote._id %> form="submit-vote" />
+
+<% if (page.vote.multiple) { %>
+
+	<% page.vote.choices.forEach((element, idx) => { %>
+		<div>
+			<input
+				type="checkbox"
+				name="selected-choices"
+				id=<%= idx %>
+				value=<%= element._id %>
+				form="submit-vote"
+			/>
+			<span class="spanner-narrow"></span>
+			<label class="word-breakable" for=<%= idx %>><%= element.title %></label>
+		</div>
+		<div class="divider-narrow"></div>
+	<% }); %>
+
+<% } else { %>
+
+	<% page.vote.choices.forEach((element, idx) => { %>
+		<div>
+			<input
+				type="radio"
+				name="selected-choices"
+				id=<%= idx %>
+				value=<%= element._id %>
+				form="submit-vote"
+			/>
+			<span class="spanner-narrow"></span>
+			<label class="word-breakable" for=<%= idx %>><%= element.title %></label>
+		</div>
+		<div class="divider-narrow"></div>
+	<% }); %>
+
+<% } %>
+
+<div class="divider"></div>
+
+<div class="controls-container">
+	<input type="submit" value="Back" form="return-home" />
+	<span class="h-grow"></span>
+	<input type="reset" value="Reset" form="submit-vote" />
+	<input type="submit" value="Submit" form="submit-vote" class="accent-background" />
+</div>
+
+<!-- stylesheets and javascripts -->
+<link rel="stylesheet" type="text/css" href="css/checkboxes.css"></link>
+<script type="text/javascript" src="js/vote-casting.js"></script>

@@ -1,0 +1,47 @@
+<!doctype ejs>
+<html>
+	<head>
+		<title><%= index.title %> - Online Voting System</title>
+
+		<!-- stylesheets and javascript -->
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+
+		<!-- link to Inter font -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" />
+
+		<!-- link to Google Material Symbols -->
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0" />
+	</head>
+	<body>
+		<div class="page-container">
+
+			<!-- navigation bar -->
+			<div class="nav-bar">
+				<button class="button-undecorated" type="submit" form="return-home">
+					<span class="title">OVS</span>
+				</button>
+
+				<span class="h-grow"></span>
+
+				<!-- show username and log out controls -->
+                <% if (index.loggedIn) { %>
+				    <span><%= index.username %></span>
+					<button class="button-narrow icon" type="submit" form="log-out">
+						<span class="material-symbols-outlined">logout</span>
+					</button>
+                <% } %>
+			</div>
+			<form action="/" method="get" id="return-home"></form>
+			<form action="/log-out" method="post" id="log-out"></form>
+
+			<!-- content -->
+			<div class="content">
+                <%# dynamically load page content here (index.page is assigned by the server) %>
+                <%- include(index.page); %>
+			</div>
+
+		</div>
+	</body>
+</html>

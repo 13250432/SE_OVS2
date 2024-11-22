@@ -1,0 +1,45 @@
+<!-- form action javascript function: https://stackoverflow.com/a/683567 -->
+<form action="javascript:publishVote()" method="post" id="publish-vote"></form>
+<form action="/" method="get" id="return-home"></form>
+
+<div>
+	<label for="topic" class="heading">Topic</label>
+	<input type="text" id="topic" class="h-extended" placeholder="Enter Topic..." form="publish-vote" required />
+</div>
+
+<div class="divider"></div>
+
+<div>
+	<label class="heading">Choices</label>
+
+	<ul id="choices">
+	</ul>
+	<input type="button" class="h-extended" value="Add Choice" onclick="addChoice()" form="publish-vote" />
+	<!-- <button id="add-choice" onclick="addChoice(); return false;"><span class="material-symbols-outlined">add</span></button> -->
+
+	<div class="divider-narrow"></div>
+	<input type="checkbox" id="multiple" form="publish-vote" />
+	<label for="multiple" class="checkbox-title">Allow Multiple Selection</label>
+</div>
+
+<div class="divider"></div>
+
+<div>
+	<label for="end-date" class="heading">Ends</label>
+	<br />
+	<input type="datetime-local" id="end-date" form="publish-vote" />
+</div>
+
+<div class="divider"></div>
+
+<div class="controls-container">
+	<input type="submit" value="Cancel" form="return-home" />
+	<span class="h-grow"></span>
+	<input type="reset" value="Reset" form="publish-vote" />
+	<input type="submit" value="Publish" form="publish-vote" class="accent-background" />
+</div>
+
+<!-- stylesheets -->
+<link rel="stylesheet" type="text/css" href="css/vote-creation.css" />
+<link rel="stylesheet" type="text/css" href="css/checkboxes.css" />
+<script type="text/javascript" src="js/vote-creation.js"></script>

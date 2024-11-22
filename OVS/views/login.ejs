@@ -1,0 +1,64 @@
+<% if (page.warnings.length > 0) { %>
+	<div class="warnings-container">
+		<ul>
+			<% for (i = 0; i < page.warnings.length; i++) { %>
+				<li><%= page.warnings[i] %></li>
+			<% } %>
+		</ul>
+	</div>
+
+	<div class="divider"></div>
+<% } %>
+
+<!-- send POST request directly to the server with route "/login" -->
+<form action="/log-in" method="post" id="log-in"></form>
+<form action="/registration" method="get" id="register-instead"></form>
+
+<table>
+	<tr>
+		<td rowspan="5">
+			<span class="heading">Login</span>
+		</td>
+		<td>
+			<input
+				type="text"
+				form="log-in"
+				class="h-extended"
+				name="username"
+				placeholder="Enter Username..."
+				required
+			/>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<input
+				type="password"
+				form="log-in"
+				class="h-extended"
+				name="password"
+				placeholder="Enter Password..."
+				required
+			/>
+		</td>
+	</tr>
+	<tr class="tr-spacer"></tr>
+	<tr>
+		<td>
+			<input
+				type="submit"
+				form="log-in"
+				class="h-extended accent-background"
+				value="Log In"
+			/>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<span>New to OVS? <input type="submit" form="register-instead" class="button-undecorated accent-foreground" value="Register Instead" /></span>
+		</td>
+	</tr>
+</table>
+
+<!-- stylesheets -->
+<link rel="stylesheet" type="text/css" href="css/login.css" />

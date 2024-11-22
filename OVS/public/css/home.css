@@ -1,0 +1,26 @@
+.home-heading-bar {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-vote-information {
+    text-align: left;
+    font-size: var(--font-size-body);
+    color: var(--foreground-color-light-secondary);
+
+    padding: var(--padding-wide);
+
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.vote-information {
+    flex-grow: 1;
+
+    /* https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_text/Wrapping_breaking_text */
+    word-break: break-all;
+}

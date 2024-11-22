@@ -1,0 +1,52 @@
+<span class="heading"><%= page.vote.topic %></span>
+<br />
+<% if (page.vote.endDateFormatted) { %>
+	<span class="material-symbols-outlined icon">event</span>
+	<%= page.vote.endDateFormatted %>
+<% } %>
+
+<form action="/" method="get" id="return-home"></form>
+<form action="javascript:deleteVote()" method="post" id="delete-vote"></form>
+<form action="javascript:announceResult()" method="post" id="announce-result"></form>
+<input type="hidden" id="vote-id" value=<%= page.vote._id %> />
+
+<div class="divider"></div>
+<canvas id="vote-result"></canvas>
+<div class="divider"></div>
+
+<div class="controls-container">
+	<input type="submit" value="Back" form="return-home" />
+	<span class="h-grow"></span>
+	<input type="submit" value="Delete..." form="delete-vote" />
+	<% if (!page.resultAnnounced) { %>
+		<input type="submit" value="Announce Result..." form="announce-result" class="accent-background" />
+	<% } %>
+</div>
+
+<!-- javascripts -->
+<script type="text/javascript" src="js/vote-analysis.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+	Chart.defaults.font.size = 15;
+	Chart.defaults.font.family = "'Inter', 'Helvetica', 'Arial', sans-serif";
+	new Chart('vote-result', {
+		type: 'bar',
+		data: {
+			<%# https://stackoverflow.com/a/43149013 %>
+			labels: <%- JSON.stringify(page.vote.choices.map((choice) => { return choice.title; })); %>,
+			datasets: [{
+				label: '',
+				backgroundColor: 'rgb(185, 145, 130)',
+				data: <%- JSON.stringify(page.vote.choices.map((choice) => { return choice.voteCount; })); %>
+			}]
+		},
+		options: {
+			animation: false,
+			title: { display: false },
+			plugins: {
+				<%# https://stackoverflow.com/a/68704063 %>
+				legend: { display: false }
+			}
+		}
+	});
+</script>

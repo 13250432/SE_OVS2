@@ -1,0 +1,64 @@
+<div class="home-heading-bar">
+	<span class="heading">Votes</span>
+	<span class="h-grow"></span>
+
+	<% if (page.admin) { %>
+		<form action="/vote-creation" method="get" id="create-vote"></form>
+		<input type="submit" value="Create Vote" form="create-vote" class="accent-background" />
+	<% } %>
+</div>
+
+<div class="divider"></div>
+
+<% if (page.votes.length <= 0) { %>
+
+	<div class="warnings-container">
+		<span>No ongoing votes.</span>
+	</div>
+
+<% } else { %>
+
+	<% page.votes.forEach((element) => { %>
+		<form action="/view-vote" method="post">
+
+			<input type="hidden" class="input-hidden" name="vote_id" value=<%= element._id %> />
+			<!-- hidden input to send post data about this vote -->
+
+			<button class="button-vote-information h-extended" type="submit">
+				
+				<span class="vote-information">
+
+					<span class="heading"><%= element.topic %></span>
+					<br />
+
+					<% if (element.endDateFormatted) { %>
+						<span class="material-symbols-outlined icon">event</span>
+						<%= element.endDateFormatted %>
+						<br />
+					<% } %>
+
+					<% for (i = 0; i < element.choices.length; i++) { %>
+						<%= element.choices[i].title %>
+						<%# add "/" between choices to divide them %>
+						<% if (i < element.choices.length - 1) { %>
+							/
+						<% } %>
+					<% } %>
+					<br />
+
+				</span>
+				
+				<span class="spanner-narrow"></span>
+				<span class="material-symbols-outlined icon">arrow_forward</span>
+			
+			</button>
+		</form>
+		
+		<div class="divider-narrow"></div>
+	<% }); %>
+
+<% } %>
+
+<!-- stylesheets -->
+<link rel="stylesheet" type="text/css" href="css/home.css" />
+

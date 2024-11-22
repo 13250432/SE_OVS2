@@ -1,0 +1,31 @@
+/* TODO: use (global) variables */
+
+ul {
+	list-style: none;
+	margin: 5px 0px;
+	padding: 0px;
+}
+
+.choice {
+	margin: 5px 0px;
+	background-color: rgb(235, 235, 235);
+	border-radius: 10px;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+}
+
+.choice-title {
+	flex-grow: 1;
+}
+
+.choice-remove {
+	border: unset;
+	background: unset;
+
+	padding: var(--padding-narrow);
+}
+
+.checkbox-title {
+	vertical-align: middle;
+}

@@ -1,0 +1,89 @@
+<% if (page.warnings.length > 0) { %>
+	<div class="warnings-container">
+		<ul>
+			<% for (i = 0; i < page.warnings.length; i++) { %>
+				<li><%= page.warnings[i] %></li>
+			<% } %>
+		</ul>
+	</div>
+
+	<div class="divider"></div>
+<% } %>
+
+<!--
+	send POST request directly to the server with route "/register"
+
+	for inputs to be read, they must be defined with the "name" attribute.
+	https://www.w3schools.com/tags/att_input_name.asp
+	(i can't find any explanation as to why "name" is used :c)
+-->
+<form action="/register" method="post" id="register"></form>
+<form action="/login" method="get" id="log-in-instead"></form>
+
+<table>
+	<tr>
+		<td rowspan="7">
+			<span class="heading">Registration</span>
+		</td>
+		<td>
+			<input
+				type="text"
+				form="register"
+				class="h-extended"
+				name="username"
+				pattern="\w{3,50}"
+				placeholder="Enter Username..."
+				title="Alphanumerics and underscores only (length: 3-50 characters)"
+				required
+			/>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<input
+				type="password"
+				form="register"
+				class="h-extended"
+				name="password"
+				pattern="\S{3,50}"
+				placeholder="Enter Password..."
+				title="Any characters except whitespaces (length: 3-50 characters)"
+				required
+			/>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<!-- password confirmation -->
+			<input
+				type="password"
+				form="register"
+				class="h-extended"
+				name="confirmation"
+				placeholder="Confirm Password..."
+				required
+			/>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<input type="checkbox" form="register" id="admin" name="admin" />
+			<label for="admin">Register as Admin</label>
+		</td>
+	</tr>
+	<tr class="tr-spacer"></tr>
+	<tr>
+		<td>
+			<input type="submit" form="register" class="h-extended accent-background" name="register" value="Register" />
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<span>Have an Account? <input type="submit" form="log-in-instead" class="button-undecorated accent-foreground" value="Log In Instead" /></span>
+		</td>
+	</tr>
+</table>
+
+<!-- stylesheets -->
+<link rel="stylesheet" type="text/css" href="css/login.css" />
+<link rel="stylesheet" type="text/css" href="css/checkboxes.css" />
