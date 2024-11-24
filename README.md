@@ -14,5 +14,5 @@ Group Project for Software Engineering
 
 4. Open a terminal and ``cd`` into the same directory as ``server.js``, then run this command: ``npm install``. This ensures the dependencies are set up correctly.
 5. In the same terminal instance, run this command: ``npm start``. This will start the server.
-6. Note down the port outputted to the terminal. By default it is ``8099``
-7. Enter ``localhost:<port>`` to access the Online Voting System. You can quickly access through [here](http://localhost:8099).
+6. Note down the port outputted to the terminal. By default it is ``8099``.
+7. Enter ``localhost:<port>`` in your browser to access the Online Voting System. You can quickly access through [here](http://localhost:8099).
